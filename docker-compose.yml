@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  ball-chaney-website:
+    image: nginx:alpine
+    container_name: ball-chaney-website
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "com.caddy.name=ball-chaney-honey-do"
+      - "com.caddy.reverse_proxy={{up 80}}"
+
+networks:
+  web:
+    external: true
