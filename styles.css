@@ -495,6 +495,70 @@ img, svg {
     font-size: 0.95rem;
 }
 
+/* ---------- Testimonials ---------- */
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+}
+
+.testimonial-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2rem 1.9rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.testimonial-stars {
+    color: var(--red);
+    display: flex;
+    gap: 0.2rem;
+}
+
+.testimonial-stars svg {
+    width: 18px;
+    height: 18px;
+}
+
+.testimonial-card blockquote {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--ink);
+    flex: 1;
+}
+
+.testimonial-card blockquote::before {
+    content: "\201C";
+}
+
+.testimonial-card blockquote::after {
+    content: "\201D";
+}
+
+.testimonial-card cite {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--navy-800);
+    font-size: 0.95rem;
+}
+
+.testimonial-card cite span {
+    display: block;
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.testimonial-invite {
+    flex: 1;
+    color: var(--ink);
+}
+
 /* ---------- About owners ---------- */
 
 .about-owners {
@@ -763,7 +827,7 @@ img, svg {
     margin-bottom: 1.1rem;
 }
 
-.contact-card .contact-link {
+.contact-link {
     font-weight: 600;
     color: var(--navy-700);
     text-decoration: none;
@@ -771,7 +835,7 @@ img, svg {
     word-break: break-word;
 }
 
-.contact-card .contact-link:hover {
+.contact-link:hover {
     color: var(--navy-900);
     text-decoration: underline;
 }
