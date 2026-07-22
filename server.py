@@ -34,10 +34,13 @@ class SandboxedHTTPRequestHandler(SimpleHTTPRequestHandler):
                           format % args))
     
     def do_GET(self):
+        # Strip query string / fragment (e.g. cache-busting ?v=2) before any checks
+        self.path = self.path.split('?', 1)[0].split('#', 1)[0]
+
         # Handle root path - serve index.html
         if self.path == '/' or self.path == '':
             self.path = '/index.html'
-        
+
         # Only allow GET requests for specific file types
         allowed_extensions = ['.html', '.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.ico']
         if not any(self.path.endswith(ext) for ext in allowed_extensions):
