@@ -1,9 +1,25 @@
 # Deployment Guide
 
-## Overview
+## Primary hosting: GitHub Pages (free)
 
-The Ball and Chaney Honey-Do Services website is deployed on the Spark server (`spark`) as a
-sandboxed Python HTTP server behind a Tailscale Funnel.
+The site is hosted on GitHub Pages from the public repo
+`https://github.com/shanedertrain/ball-chaney-honey-do` (branch `master`, root).
+
+**Public URL:** https://shanedertrain.github.io/ball-chaney-honey-do/
+
+To deploy changes:
+
+```bash
+git add -A && git commit -m "..." && git push
+```
+
+Pages rebuilds automatically on push (takes ~1 minute). A custom domain (e.g.
+ballandchaneyhoneydo.com, ~$10-12/yr) can be pointed at it later via repo Settings → Pages.
+
+## Secondary hosting: Spark server (self-hosted)
+
+The site is also deployed on the Spark server (`spark`) as a sandboxed Python HTTP server
+behind a Tailscale Funnel.
 
 ## Prerequisites
 

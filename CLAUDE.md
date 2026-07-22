@@ -20,7 +20,11 @@ business in Slidell, Louisiana). Built with HTML, CSS, and a sandboxed Python HT
 
 ## Deployment
 
-See **DEPLOYMENT.md** for full instructions. Quick summary:
+**Primary: GitHub Pages** — public repo `shanedertrain/ball-chaney-honey-do`, deploys
+automatically on `git push` (branch `master`, root). Public URL:
+`https://shanedertrain.github.io/ball-chaney-honey-do/`
+
+**Secondary: Spark server.** See **DEPLOYMENT.md** for full instructions. Quick summary:
 
 ```bash
 scp -r /home/cbash23/projects/ball-chaney-honey-do/* spark:/home/cambash23/projects/ball-chaney-honey-do/
