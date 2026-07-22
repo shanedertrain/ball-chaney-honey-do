@@ -1,0 +1,16 @@
+;; Cloudflare DNS records for ballandchaneyhoneydo.com
+;; Import via: Cloudflare dashboard -> DNS -> Records -> Import and Export -> Import DNS records
+;; Records that already exist in the zone are skipped on import.
+;;
+;; A records: point the apex domain at GitHub Pages (keep DNS-only / grey cloud)
+ballandchaneyhoneydo.com.	1	IN	A	185.199.108.153
+ballandchaneyhoneydo.com.	1	IN	A	185.199.109.153
+ballandchaneyhoneydo.com.	1	IN	A	185.199.110.153
+ballandchaneyhoneydo.com.	1	IN	A	185.199.111.153
+
+;; www: alias to GitHub Pages (keep DNS-only / grey cloud)
+www.ballandchaneyhoneydo.com.	1	IN	CNAME	shanedertrain.github.io.
+
+;; Email anti-spoofing: the domain sends no email, so reject anything claiming to be from it
+ballandchaneyhoneydo.com.	3600	IN	TXT	"v=spf1 -all"
+_dmarc.ballandchaneyhoneydo.com.	3600	IN	TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
