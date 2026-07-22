@@ -5,7 +5,7 @@
 The site is hosted on GitHub Pages from the public repo
 `https://github.com/shanedertrain/ball-chaney-honey-do` (branch `master`, root).
 
-**Public URL:** https://shanedertrain.github.io/ball-chaney-honey-do/
+**Public URL:** https://ballandchaneyhoneydo.com/ (GitHub Pages with custom domain; github.io URL redirects)
 
 To deploy changes:
 
