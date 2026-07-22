@@ -1,0 +1,4 @@
+;; Email anti-spoofing records for ballandchaneyhoneydo.com
+;; The domain sends no email, so tell the world to reject anything claiming otherwise.
+ballandchaneyhoneydo.com.	3600	IN	TXT	"v=spf1 -all"
+_dmarc.ballandchaneyhoneydo.com.	3600	IN	TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
