@@ -8,7 +8,7 @@ set -e
 
 # Configuration
 PORT=${PORT:-8080}
-WEBSITE_DIR="/home/cbash23/projects/ball-chaney-honey-do"
+WEBSITE_DIR="/home/cambash23/projects/ball-chaney-honey-do"
 SERVICE_NAME="ball-chaney-website"
 
 echo "Deploying Ball and Chaney Honey-Do Services website..."
@@ -29,19 +29,17 @@ if lsof -i :$PORT > /dev/null 2>&1; then
     sleep 1
 fi
 
-# Create a systemd service file for the website
+# Create or update the systemd service file for the website
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
-
-if [ ! -f "$SERVICE_FILE" ]; then
-    echo "Creating systemd service..."
-    cat > "$SERVICE_FILE" << EOF
+echo "Creating systemd service..."
+cat > "$SERVICE_FILE" << EOF
 [Unit]
 Description=Ball and Chaney Honey-Do Services Website
 After=network.target
 
 [Service]
 Type=simple
-User=cbash23
+User=cambash23
 WorkingDirectory=$WEBSITE_DIR
 ExecStart=/usr/bin/python3 $WEBSITE_DIR/server.py
 Restart=always
@@ -50,19 +48,35 @@ Environment=PORT=$PORT
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
-ProtectHome=true
+ProtectHome=read-only
 ReadWritePaths=$WEBSITE_DIR
 CapabilityBoundingSet=
 AmbientCapabilities=
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+ProtectClock=true
+ProtectHostname=true
+ProtectProc=invisible
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources @mount @swap @module @debug @cpu-emulation
+IPAddressDeny=any
+IPAddressAllow=localhost
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
-    systemctl daemon-reload
-    systemctl enable "$SERVICE_NAME"
-    echo "Systemd service created and enabled"
-fi
+systemctl daemon-reload
+systemctl enable "$SERVICE_NAME"
+echo "Systemd service created and enabled"
 
 # Start the service
 echo "Starting website service..."
