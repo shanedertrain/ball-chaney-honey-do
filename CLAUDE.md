@@ -24,7 +24,7 @@ business in Slidell, Louisiana). Built with HTML, CSS, and a sandboxed Python HT
 automatically on `git push` (branch `master`, root). Public URL:
 `https://ballandchaneyhoneydo.com/` (custom domain; the github.io URL redirects)
 
-**Secondary: Spark server.** See **DEPLOYMENT.md** for full instructions. Quick summary:
+**Former secondary: Spark server** — decommissioned 2026-07-22 (service stopped/disabled, funnel reset). Historical instructions in DEPLOYMENT.md:
 
 ```bash
 scp -r /home/cbash23/projects/ball-chaney-honey-do/* spark:/home/cambash23/projects/ball-chaney-honey-do/
